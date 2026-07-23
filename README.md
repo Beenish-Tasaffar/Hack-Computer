@@ -1,4 +1,5 @@
 #  Hack Computer
+<img width="1800" height="600" alt="logo" src="https://github.com/user-attachments/assets/d15658c3-4f9c-4fa9-ba19-d7f3a916b089" />
 
 A complete, from-scratch implementation of the **Hack Computer** — built from the ground up starting at elementary logic gates (NAND) all the way to a working CPU, Assembler, and Virtual Machine, following the *"From NAND to Tetris"* computer architecture curriculum.
 
