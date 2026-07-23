@@ -53,6 +53,53 @@ Each stage folder under `files/` typically contains:
 | `.jack` | Jack high-level language source code |
 
 ---
+## 🏗️ Architecture Overview
+
+```mermaid
+flowchart TD
+    A["01 — Boolean Logic\nAnd, Or, Not, Xor, Mux, DMux"] --> B["02 — Boolean Arithmetic\nHalfAdder, FullAdder, Add16, ALU"]
+    B --> C["03 — Sequential Logic\nBit, Register, RAM8→RAM16K, PC"]
+    C --> D["04 — Computer Architecture\nCPU, Memory, Computer"]
+    D --> E["05 — Assembler\n.asm → .hack"]
+    E --> F["06 — VM Translator I\nStack Arithmetic, Memory Access"]
+    F --> G["07 — VM Translator II\nProgram Flow, Function Calls"]
+    G --> H["08 — Jack Program\nSquare Game (.jack → .vm)"]
+
+    subgraph Tools["🛠️ Nand2Tetris Toolchain"]
+        T1[Hardware Simulator]
+        T2[CPU Emulator]
+        T3[Assembler]
+        T4[VM Emulator]
+        T5[Jack Compiler]
+        T6[Text Comparer]
+    end
+
+    T1 -.tests.-> A
+    T1 -.tests.-> B
+    T1 -.tests.-> C
+    T1 -.tests.-> D
+    T2 -.runs.-> D
+    T3 -.runs.-> E
+    T4 -.runs.-> F
+    T4 -.runs.-> G
+    T5 -.compiles.-> H
+    T6 -.verifies.-> Tools
+
+    style A fill:#4a90d9,color:#fff
+    style B fill:#4a90d9,color:#fff
+    style C fill:#4a90d9,color:#fff
+    style D fill:#f5a623,color:#fff
+    style E fill:#f5a623,color:#fff
+    style F fill:#7ed321,color:#fff
+    style G fill:#7ed321,color:#fff
+    style H fill:#bd10e0,color:#fff
+```
+This shows the four layers clearly:
+
+🔵 Blue — Hardware layer (gates → chips → memory)
+🟠 Orange — CPU + Assembler layer
+🟢 Green — Virtual Machine layer
+🟣 Purple — High-level Jack program
 
 ## 🛠️ Requirements / Installation
 
