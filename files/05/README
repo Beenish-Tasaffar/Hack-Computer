@@ -1,0 +1,23 @@
+
+Assembler - 
+
+    A Python program which receives an asm file as a command line argument,
+    and saves a .hack file (with the same base filename) which contains the compiled
+    hack binary program.
+
+    Performs three passes over the program:
+
+    The first pass 'cleans' the program - i.e removes comments, empty lines and
+    unneeded spaces, so that the rest of the compilation process works on a list of pure
+    asm commands.
+
+    The second pass extracts the label symbols from the program,
+    and updates the program's symbol table.
+
+    The third pass iterates over all the program's non-label line, and compiles them into
+    the needed Hack binary codes, and uses the symbols extracted in the second pass.
+
+    Most of the commands were explicitly translated according to the bit sequences
+    specified in Chapter 6, using a simple python dictionary.
+
+Makefile - Only changes permissions to the assembler so it can run properly.

@@ -1,0 +1,53 @@
+// File name: files/01/DMux8Way.hdl
+
+/**
+ * 8-way demultiplexor:
+ * {a, b, c, d, e, f, g, h} = {in, 0, 0, 0, 0, 0, 0, 0} if sel == 000
+ *                            {0, in, 0, 0, 0, 0, 0, 0} if sel == 001
+ *                            etc.
+ *                            {0, 0, 0, 0, 0, 0, 0, in} if sel == 111
+ */
+
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+
+    PARTS:
+    // Put your code here:
+    Not(in=sel[0], out=notsel0);
+    Not(in=sel[1], out=notsel1);
+    Not(in=sel[2], out=notsel2);
+    
+    And(a=notsel0, b=notsel1, out=w1);
+    And(a=notsel2, b=in, out=w2);
+    And(a=w1, b=w2, out=a);
+
+    And(a=sel[0], b=notsel1, out=w3);
+    And(a=notsel2, b=in, out=w4);
+    And(a=w3, b=w4, out=b);
+    
+    And(a=notsel0, b=sel[1], out=w5);
+    And(a=notsel2, b=in, out=w6);
+    And(a=w5, b=w6, out=c);
+    
+    And(a=sel[0], b=sel[1], out=w7);
+    And(a=notsel2, b=in, out=w8);
+    And(a=w7, b=w8, out=d);
+    
+    And(a=notsel0, b=notsel1, out=w9);
+    And(a=sel[2], b=in, out=w10);
+    And(a=w9, b=w10, out=e);
+    
+    And(a=sel[0], b=notsel1, out=w11);
+    And(a=sel[2], b=in, out=w12);
+    And(a=w11, b=w12, out=f);
+    
+    And(a=notsel0, b=sel[1], out=w13);
+    And(a=sel[2], b=in, out=w14);
+    And(a=w13, b=w14, out=g);
+    
+    And(a=sel[0], b=sel[1], out=w15);
+    And(a=sel[2], b=in, out=w16);
+    And(a=w15, b=w16, out=h);
+    
+}

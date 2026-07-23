@@ -1,0 +1,25 @@
+// File name: files/02/FullAdder.hdl
+
+/**
+ * Computes the sum of three bits.
+ * Logic: SUM = C-IN XOR (A XOR B)
+ * Carry = A B + B C-IN + A C-IN
+ */
+
+CHIP FullAdder {
+    IN a, b, c;  // 1-bit inputs
+    OUT sum,     // Right bit of a + b + c
+        carry;   // Left bit of a + b + c
+
+    PARTS:
+    // Put you code here:
+    Xor(a=a, b=b, out=w1);
+    Xor(a=c, b=w1, out=sum);
+    
+    And(a=a, b=b, out=w2);
+    And(a=b, b=c, out=w3);
+    And(a=a, b=c, out=w4);
+
+    Or(a=w2, b=w3, out=out1);
+    Or(a=out1, b=w4, out=carry);
+}

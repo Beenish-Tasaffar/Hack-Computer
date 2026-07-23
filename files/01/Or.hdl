@@ -1,0 +1,18 @@
+// File name: files/01/Or.hdl
+
+ /**
+ * Or gate:
+ * out = 1 if (a == 1 or b == 1)
+ *       0 otherwise
+ */
+
+CHIP Or {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    Nand(a=a, b=a, out=w1);
+    Nand(a=b, b=b, out=w2);
+    Nand(a=w1, b=w2, out=out);
+}

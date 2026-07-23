@@ -1,0 +1,32 @@
+// File name: files/01/DMux4Way.hdl
+
+/**
+ * 4-way demultiplexor:
+ * {a, b, c, d} = {in, 0, 0, 0} if sel == 00
+ *                {0, in, 0, 0} if sel == 01
+ *                {0, 0, in, 0} if sel == 10
+ *                {0, 0, 0, in} if sel == 11
+ */
+
+CHIP DMux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    // Put your code here:
+    Not(in=sel[0], out=notsel0);
+    Not(in=sel[1], out=notsel1);
+    
+    And(a=notsel0, b=notsel1, out=w1);
+    And(a=w1, b=in, out=a);
+
+    And(a=sel[0], b=notsel1, out=w2);
+    And(a=w2, b=in, out=b);
+
+    And(a=notsel0, b=sel[1], out=w3);
+    And(a=w3, b=in, out=c);
+
+    And(a=sel[0], b=sel[1], out=w4);
+    And(a=w4, b=in, out=d);
+
+}

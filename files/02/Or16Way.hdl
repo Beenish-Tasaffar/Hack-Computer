@@ -1,0 +1,30 @@
+// File name: files/02/Or16Way.hdl
+
+/**
+ * 16-way Or: 
+ * out = (in[0] or in[1] or ... or in[15])
+ */
+
+CHIP Or16Way {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    Or(a=in[0], b=in[1], out=w1);
+    Or(a=in[2], b=w1, out=w2);
+    Or(a=in[3], b=w2, out=w3);
+    Or(a=in[4], b=w3, out=w4);
+    Or(a=in[5], b=w4, out=w5);
+    Or(a=in[6], b=w5, out=w6);
+    Or(a=in[7], b=w6, out=w7);
+    Or(a=in[8], b=w7, out=w8);
+    Or(a=in[9], b=w8, out=w9);
+    Or(a=in[10], b=w9, out=w10);
+    Or(a=in[11], b=w10, out=w11);
+    Or(a=in[12], b=w11, out=w12);
+    Or(a=in[13], b=w12, out=w13);
+    Or(a=in[14], b=w13, out=w14);
+    Or(a=in[15], b=w14, out=out);
+    
+}

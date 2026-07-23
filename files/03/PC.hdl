@@ -1,0 +1,26 @@
+// File name: files/03/PC.hdl
+
+/**
+ * A 16-bit counter with load and reset control bits.
+ * if      (reset[t] == 1) out[t+1] = 0
+ * else if (load[t] == 1)  out[t+1] = in[t]
+ * else if (inc[t] == 1)   out[t+1] = out[t] + 1  (integer addition)
+ * else                    out[t+1] = out[t]
+ */
+
+CHIP PC {
+    IN in[16],load,inc,reset;
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+    Inc16(in=oo,out=incd);
+
+	Mux16(a=oo,b=incd,sel=inc,out=o);
+
+	Mux16(a=o,b=in,sel=load,out=uu);
+
+	Mux16(a=uu,b[0..15]=false,sel=reset,out=this);
+	
+	Register(in=this,load=true,out=out,out=oo);
+}
