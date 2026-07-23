@@ -1,4 +1,4 @@
-# 👑 Queen Beenie's Hack Computer
+#  Hack Computer
 
 A complete, from-scratch implementation of the **Hack Computer** — built from the ground up starting at elementary logic gates (NAND) all the way to a working CPU, Assembler, and Virtual Machine, following the *"From NAND to Tetris"* computer architecture curriculum.
 
@@ -6,7 +6,7 @@ This project demonstrates how a modern computer is built in layers: **Boolean Lo
 
 ---
 
-## ✨ Author
+## Author
 
 **Made by: Beenish Tasaffar**
 
