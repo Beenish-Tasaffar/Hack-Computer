@@ -98,8 +98,11 @@ flowchart TD
 This shows the four layers clearly:
 
 🔵 Blue — Hardware layer (gates → chips → memory)
+
 🟠 Orange — CPU + Assembler layer
+
 🟢 Green — Virtual Machine layer
+
 🟣 Purple — High-level Jack program
 
 ## 🛠️ Requirements / Installation
